@@ -233,17 +233,6 @@ Dự án này phù hợp để:
 - Sử dụng UI Framework (Sunny.UI)
 - Áp dụng OOP, Design Patterns
 
-## 📚 Tài liệu hướng dẫn
-
-Dự án có các file hướng dẫn chi tiết:
-
-- **[MUSIC_PLAYER_GUIDE.md](MUSIC_PLAYER_GUIDE.md)** - Hướng dẫn sử dụng Music Player
-- **[VIDEO_PLAYER_GUIDE.md](VIDEO_PLAYER_GUIDE.md)** - Hướng dẫn xem và tua video
-- **[PLAYLIST_PLAYBACK_GUIDE.md](PLAYLIST_PLAYBACK_GUIDE.md)** - Hướng dẫn phát playlist
-- **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** - Xử lý sự cố & Fix lỗi thường gặp
-- **[Database/LOGIN_SYSTEM_GUIDE.md](Database/LOGIN_SYSTEM_GUIDE.md)** - Hướng dẫn hệ thống đăng nhập
-- **[SETUP_MEDIA_PLAYER.md](SETUP_MEDIA_PLAYER.md)** - Hướng dẫn cài đặt Windows Media Player COM
-
 ## 📄 License
 
 Project này được tạo cho mục đích học tập và nghiên cứu.
