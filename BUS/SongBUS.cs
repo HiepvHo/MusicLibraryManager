@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using MusicLibraryManager.DAL;
 using MusicLibraryManager.Entities;
+using MusicLibraryManager.Helpers;
 
 namespace MusicLibraryManager.BUS
 {
@@ -15,7 +16,7 @@ namespace MusicLibraryManager.BUS
         {
             try
             {
-                return SongDAO.GetAllSongs();
+                return SongDAO.GetAllSongs(UserSession.CurrentUserID);
             }
             catch (Exception ex)
             {
@@ -33,7 +34,7 @@ namespace MusicLibraryManager.BUS
                 if (songID <= 0)
                     throw new Exception("ID bài hát không hợp lệ");
 
-                return SongDAO.GetSongByID(songID);
+                return SongDAO.GetSongByID(songID, UserSession.CurrentUserID);
             }
             catch (Exception ex)
             {
@@ -58,7 +59,7 @@ namespace MusicLibraryManager.BUS
                 if (!File.Exists(song.FilePath))
                     throw new Exception("File nhạc không tồn tại");
 
-                return SongDAO.AddSong(song);
+                return SongDAO.AddSong(song, UserSession.CurrentUserID);
             }
             catch (Exception ex)
             {
@@ -80,7 +81,7 @@ namespace MusicLibraryManager.BUS
                 if (string.IsNullOrWhiteSpace(song.SongTitle))
                     throw new Exception("Tên bài hát không được để trống");
 
-                return SongDAO.UpdateSong(song);
+                return SongDAO.UpdateSong(song, UserSession.CurrentUserID);
             }
             catch (Exception ex)
             {
@@ -98,7 +99,7 @@ namespace MusicLibraryManager.BUS
                 if (songID <= 0)
                     throw new Exception("ID bài hát không hợp lệ");
 
-                return SongDAO.DeleteSong(songID);
+                return SongDAO.DeleteSong(songID, UserSession.CurrentUserID);
             }
             catch (Exception ex)
             {
@@ -116,7 +117,7 @@ namespace MusicLibraryManager.BUS
                 if (string.IsNullOrWhiteSpace(searchTerm))
                     return GetAllSongs();
 
-                return SongDAO.SearchSongs(searchTerm.Trim());
+                return SongDAO.SearchSongs(searchTerm.Trim(), UserSession.CurrentUserID);
             }
             catch (Exception ex)
             {

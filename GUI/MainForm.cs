@@ -93,6 +93,11 @@ namespace MusicLibraryManager.GUI
             OpenChildForm(new StatisticsForm());
         }
 
+        public void ShowHistory()
+        {
+            OpenChildForm(new HistoryForm());
+        }
+
         private Form activeForm = null;
         private void OpenChildForm(Form childForm)
         {
@@ -138,6 +143,11 @@ namespace MusicLibraryManager.GUI
             ShowPlaylistManagement();
         }
 
+        private void btnHistory_Click(object sender, EventArgs e)
+        {
+            ShowHistory();
+        }
+
         private void btnStatistics_Click(object sender, EventArgs e)
         {
             ShowStatistics();
@@ -160,13 +170,15 @@ namespace MusicLibraryManager.GUI
         {
             if (UIHelper.ShowLogoutConfirm())
             {
+                // Đăng xuất và clear session
+                UserSession.Logout();
                 this.Hide();
                 
                 LoginForm loginForm = new LoginForm();
                 if (loginForm.ShowDialog() == DialogResult.OK)
                 {
                     // Đăng nhập lại thành công
-                    CurrentUser = loginForm.CurrentUser;
+                    CurrentUser = UserSession.CurrentUser;
                     UpdateUserInfo();
                     this.Show();
                 }

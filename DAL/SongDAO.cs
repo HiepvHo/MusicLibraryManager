@@ -9,12 +9,15 @@ namespace MusicLibraryManager.DAL
     public class SongDAO
     {
         /// <summary>
-        /// Lấy tất cả bài hát
+        /// Lấy tất cả bài hát theo UserID
         /// </summary>
-        public static List<Song> GetAllSongs()
+        public static List<Song> GetAllSongs(int userID)
         {
             List<Song> songs = new List<Song>();
-            DataTable dt = DatabaseHelper.ExecuteQuery("sp_GetAllSongs");
+            SqlParameter[] parameters = {
+                new SqlParameter("@UserID", userID)
+            };
+            DataTable dt = DatabaseHelper.ExecuteQuery("sp_GetAllSongs", parameters);
 
             foreach (DataRow row in dt.Rows)
             {
@@ -25,22 +28,16 @@ namespace MusicLibraryManager.DAL
         }
 
         /// <summary>
-        /// Lấy bài hát theo ID
+        /// Lấy bài hát theo ID và UserID
         /// </summary>
-        public static Song GetSongByID(int songID)
+        public static Song GetSongByID(int songID, int userID)
         {
             SqlParameter[] parameters = {
-                new SqlParameter("@SongID", songID)
+                new SqlParameter("@SongID", songID),
+                new SqlParameter("@UserID", userID)
             };
 
-            string query = "SELECT s.*, a.ArtistName, al.AlbumName, g.GenreName " +
-                          "FROM Songs s " +
-                          "LEFT JOIN Artists a ON s.ArtistID = a.ArtistID " +
-                          "LEFT JOIN Albums al ON s.AlbumID = al.AlbumID " +
-                          "LEFT JOIN Genres g ON s.GenreID = g.GenreID " +
-                          "WHERE s.SongID = @SongID";
-
-            DataTable dt = DatabaseHelper.ExecuteQueryDirect(query, parameters);
+            DataTable dt = DatabaseHelper.ExecuteQuery("sp_GetSongByID", parameters);
 
             if (dt.Rows.Count > 0)
             {
@@ -53,7 +50,7 @@ namespace MusicLibraryManager.DAL
         /// <summary>
         /// Thêm bài hát mới
         /// </summary>
-        public static int AddSong(Song song)
+        public static int AddSong(Song song, int userID)
         {
             SqlParameter[] parameters = {
                 new SqlParameter("@SongTitle", song.SongTitle),
@@ -65,17 +62,17 @@ namespace MusicLibraryManager.DAL
                 new SqlParameter("@ReleaseYear", (object)song.ReleaseYear ?? DBNull.Value),
                 new SqlParameter("@Lyrics", (object)song.Lyrics ?? DBNull.Value),
                 new SqlParameter("@FileSize", (object)song.FileSize ?? DBNull.Value),
-                new SqlParameter("@BitRate", (object)song.BitRate ?? DBNull.Value)
+                new SqlParameter("@UserID", userID)
             };
 
-            object result = DatabaseHelper.ExecuteScalar("sp_AddSong", parameters);
+            object result = DatabaseHelper.ExecuteScalar("sp_InsertSong", parameters);
             return Convert.ToInt32(result);
         }
 
         /// <summary>
         /// Cập nhật thông tin bài hát
         /// </summary>
-        public static bool UpdateSong(Song song)
+        public static bool UpdateSong(Song song, int userID)
         {
             SqlParameter[] parameters = {
                 new SqlParameter("@SongID", song.SongID),
@@ -84,9 +81,11 @@ namespace MusicLibraryManager.DAL
                 new SqlParameter("@AlbumID", (object)song.AlbumID ?? DBNull.Value),
                 new SqlParameter("@GenreID", (object)song.GenreID ?? DBNull.Value),
                 new SqlParameter("@Duration", (object)song.Duration ?? DBNull.Value),
+                new SqlParameter("@FilePath", song.FilePath),
                 new SqlParameter("@ReleaseYear", (object)song.ReleaseYear ?? DBNull.Value),
                 new SqlParameter("@Lyrics", (object)song.Lyrics ?? DBNull.Value),
-                new SqlParameter("@Rating", (object)song.Rating ?? DBNull.Value)
+                new SqlParameter("@FileSize", (object)song.FileSize ?? DBNull.Value),
+                new SqlParameter("@UserID", userID)
             };
 
             int result = DatabaseHelper.ExecuteNonQuery("sp_UpdateSong", parameters);
@@ -96,10 +95,11 @@ namespace MusicLibraryManager.DAL
         /// <summary>
         /// Xóa bài hát
         /// </summary>
-        public static bool DeleteSong(int songID)
+        public static bool DeleteSong(int songID, int userID)
         {
             SqlParameter[] parameters = {
-                new SqlParameter("@SongID", songID)
+                new SqlParameter("@SongID", songID),
+                new SqlParameter("@UserID", userID)
             };
 
             int result = DatabaseHelper.ExecuteNonQuery("sp_DeleteSong", parameters);
@@ -109,11 +109,12 @@ namespace MusicLibraryManager.DAL
         /// <summary>
         /// Tìm kiếm bài hát
         /// </summary>
-        public static List<Song> SearchSongs(string searchTerm)
+        public static List<Song> SearchSongs(string searchTerm, int userID)
         {
             List<Song> songs = new List<Song>();
             SqlParameter[] parameters = {
-                new SqlParameter("@SearchTerm", searchTerm)
+                new SqlParameter("@SearchTerm", searchTerm),
+                new SqlParameter("@UserID", userID)
             };
 
             DataTable dt = DatabaseHelper.ExecuteQuery("sp_SearchSongs", parameters);

@@ -76,6 +76,16 @@ namespace MusicLibraryManager.GUI
                 // Update play count
                 SongBUS.UpdatePlayCount(song.SongID);
                 
+                // Log play history
+                try
+                {
+                    PlayHistoryBUS.AddPlayHistory(song.SongID);
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Error logging history: {ex.Message}");
+                }
+                
                 Play();
                 
                 // Kiểm tra nếu là file video thì tự động mở PlayerWindow

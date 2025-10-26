@@ -18,6 +18,7 @@ namespace MusicLibraryManager.GUI
         private void InitializeComponent()
         {
             this.pnlMain = new Sunny.UI.UIPanel();
+            this.lblForgotPassword = new Sunny.UI.UILabel();
             this.chkShowPassword = new Sunny.UI.UICheckBox();
             this.btnExit = new Sunny.UI.UIButton();
             this.btnRegister = new Sunny.UI.UIButton();
@@ -33,6 +34,7 @@ namespace MusicLibraryManager.GUI
             // 
             // pnlMain
             // 
+            this.pnlMain.Controls.Add(this.lblForgotPassword);
             this.pnlMain.Controls.Add(this.chkShowPassword);
             this.pnlMain.Controls.Add(this.btnExit);
             this.pnlMain.Controls.Add(this.btnRegister);
@@ -53,6 +55,19 @@ namespace MusicLibraryManager.GUI
             this.pnlMain.TabIndex = 0;
             this.pnlMain.Text = null;
             this.pnlMain.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblForgotPassword
+            // 
+            this.lblForgotPassword.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblForgotPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Underline);
+            this.lblForgotPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            this.lblForgotPassword.Location = new System.Drawing.Point(310, 252);
+            this.lblForgotPassword.Name = "lblForgotPassword";
+            this.lblForgotPassword.Size = new System.Drawing.Size(180, 29);
+            this.lblForgotPassword.TabIndex = 10;
+            this.lblForgotPassword.Text = "🔑 Quên mật khẩu?";
+            this.lblForgotPassword.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblForgotPassword.Click += new System.EventHandler(this.lblForgotPassword_Click);
             // 
             // chkShowPassword
             // 
@@ -212,6 +227,7 @@ namespace MusicLibraryManager.GUI
         private Sunny.UI.UIButton btnRegister;
         private Sunny.UI.UIButton btnExit;
         private Sunny.UI.UICheckBox chkShowPassword;
+        private Sunny.UI.UILabel lblForgotPassword;
     }
 }
 

@@ -395,7 +395,7 @@ namespace MusicLibraryManager.GUI
             this.tabGenres.Controls.Add(this.pnlGenreTop);
             this.tabGenres.Location = new System.Drawing.Point(0, 40);
             this.tabGenres.Name = "tabGenres";
-            this.tabGenres.Size = new System.Drawing.Size(1150, 680);
+            this.tabGenres.Size = new System.Drawing.Size(200, 60);
             this.tabGenres.TabIndex = 1;
             this.tabGenres.Text = "🎼 Quản lý Thể loại";
             // 
@@ -411,12 +411,12 @@ namespace MusicLibraryManager.GUI
             this.pnlGenreRight.Controls.Add(this.lblGenreFormTitle);
             this.pnlGenreRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlGenreRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.pnlGenreRight.Location = new System.Drawing.Point(750, 80);
+            this.pnlGenreRight.Location = new System.Drawing.Point(-200, 80);
             this.pnlGenreRight.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlGenreRight.MinimumSize = new System.Drawing.Size(1, 1);
             this.pnlGenreRight.Name = "pnlGenreRight";
             this.pnlGenreRight.Padding = new System.Windows.Forms.Padding(10);
-            this.pnlGenreRight.Size = new System.Drawing.Size(400, 600);
+            this.pnlGenreRight.Size = new System.Drawing.Size(400, 1);
             this.pnlGenreRight.TabIndex = 2;
             this.pnlGenreRight.Text = null;
             this.pnlGenreRight.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -535,7 +535,7 @@ namespace MusicLibraryManager.GUI
             this.pnlGenreLeft.MinimumSize = new System.Drawing.Size(1, 1);
             this.pnlGenreLeft.Name = "pnlGenreLeft";
             this.pnlGenreLeft.Padding = new System.Windows.Forms.Padding(10);
-            this.pnlGenreLeft.Size = new System.Drawing.Size(1150, 600);
+            this.pnlGenreLeft.Size = new System.Drawing.Size(200, 1);
             this.pnlGenreLeft.TabIndex = 1;
             this.pnlGenreLeft.Text = null;
             this.pnlGenreLeft.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -581,7 +581,7 @@ namespace MusicLibraryManager.GUI
             this.dgvGenres.RowTemplate.Height = 24;
             this.dgvGenres.SelectedIndex = -1;
             this.dgvGenres.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvGenres.Size = new System.Drawing.Size(1130, 580);
+            this.dgvGenres.Size = new System.Drawing.Size(180, 0);
             this.dgvGenres.StripeOddColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.dgvGenres.TabIndex = 0;
             this.dgvGenres.SelectionChanged += new System.EventHandler(this.dgvGenres_SelectionChanged);
@@ -597,7 +597,7 @@ namespace MusicLibraryManager.GUI
             this.pnlGenreTop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlGenreTop.MinimumSize = new System.Drawing.Size(1, 1);
             this.pnlGenreTop.Name = "pnlGenreTop";
-            this.pnlGenreTop.Size = new System.Drawing.Size(1150, 80);
+            this.pnlGenreTop.Size = new System.Drawing.Size(200, 80);
             this.pnlGenreTop.TabIndex = 0;
             this.pnlGenreTop.Text = null;
             this.pnlGenreTop.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using MusicLibraryManager.DAL;
 using MusicLibraryManager.Entities;
+using MusicLibraryManager.Helpers;
 
 namespace MusicLibraryManager.BUS
 {
@@ -15,7 +16,7 @@ namespace MusicLibraryManager.BUS
         {
             try
             {
-                return GenreDAO.GetAllGenres();
+                return GenreDAO.GetAllGenres(UserSession.CurrentUserID);
             }
             catch (Exception ex)
             {
@@ -52,7 +53,7 @@ namespace MusicLibraryManager.BUS
                 if (string.IsNullOrWhiteSpace(genre.GenreName))
                     throw new Exception("Tên thể loại không được để trống");
 
-                return GenreDAO.AddGenre(genre);
+                return GenreDAO.AddGenre(genre, UserSession.CurrentUserID);
             }
             catch (Exception ex)
             {
@@ -74,7 +75,7 @@ namespace MusicLibraryManager.BUS
                 if (string.IsNullOrWhiteSpace(genre.GenreName))
                     throw new Exception("Tên thể loại không được để trống");
 
-                return GenreDAO.UpdateGenre(genre);
+                return GenreDAO.UpdateGenre(genre, UserSession.CurrentUserID);
             }
             catch (Exception ex)
             {
@@ -92,7 +93,7 @@ namespace MusicLibraryManager.BUS
                 if (genreID <= 0)
                     throw new Exception("ID thể loại không hợp lệ");
 
-                return GenreDAO.DeleteGenre(genreID);
+                return GenreDAO.DeleteGenre(genreID, UserSession.CurrentUserID);
             }
             catch (Exception ex)
             {

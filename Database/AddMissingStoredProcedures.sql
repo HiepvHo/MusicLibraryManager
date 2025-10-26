@@ -6,10 +6,6 @@
 USE MusicLibraryDB;
 GO
 
--- =============================================
--- Stored Procedure: sp_UpdateArtist
--- Mô tả: Cập nhật thông tin ca sĩ
--- =============================================
 IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[sp_UpdateArtist]') AND type in (N'P', N'PC'))
     DROP PROCEDURE [dbo].[sp_UpdateArtist];
 GO
@@ -22,7 +18,6 @@ CREATE PROCEDURE sp_UpdateArtist
     @ImagePath NVARCHAR(500) = NULL
 AS
 BEGIN
-    -- Không dùng SET NOCOUNT ON để ExecuteNonQuery return số dòng bị ảnh hưởng
     
     UPDATE Artists
     SET ArtistName = @ArtistName,

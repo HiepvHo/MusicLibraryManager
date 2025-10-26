@@ -53,6 +53,9 @@ namespace MusicLibraryManager.GUI
 
                 if (CurrentUser != null)
                 {
+                    // Set UserSession
+                    UserSession.Login(CurrentUser);
+                    
                     // Đăng nhập thành công
                     this.DialogResult = DialogResult.OK;
                     this.Close();
@@ -104,6 +107,24 @@ namespace MusicLibraryManager.GUI
         private void chkShowPassword_CheckedChanged(object sender, EventArgs e)
         {
             txtPassword.PasswordChar = chkShowPassword.Checked ? '\0' : '●';
+        }
+
+        private void lblForgotPassword_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ForgotPasswordForm forgotForm = new ForgotPasswordForm();
+                if (forgotForm.ShowDialog() == DialogResult.OK)
+                {
+                    // Password đã được reset thành công
+                    // Có thể tự động điền username nếu muốn
+                    UIHelper.ShowSuccess("Đặt lại mật khẩu thành công!\nVui lòng đăng nhập bằng mật khẩu mới.");
+                }
+            }
+            catch (Exception ex)
+            {
+                UIHelper.ShowError($"Lỗi: {ex.Message}");
+            }
         }
     }
 }

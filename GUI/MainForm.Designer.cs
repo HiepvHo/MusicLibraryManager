@@ -31,6 +31,7 @@ namespace MusicLibraryManager.GUI
             this.pnlSidebar = new Sunny.UI.UIPanel();
             this.btnSettings = new Sunny.UI.UIButton();
             this.btnStatistics = new Sunny.UI.UIButton();
+            this.btnHistory = new Sunny.UI.UIButton();
             this.btnPlaylists = new Sunny.UI.UIButton();
             this.btnArtists = new Sunny.UI.UIButton();
             this.btnSongs = new Sunny.UI.UIButton();
@@ -50,6 +51,7 @@ namespace MusicLibraryManager.GUI
             this.pnlSidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(70)))));
             this.pnlSidebar.Controls.Add(this.btnSettings);
             this.pnlSidebar.Controls.Add(this.btnStatistics);
+            this.pnlSidebar.Controls.Add(this.btnHistory);
             this.pnlSidebar.Controls.Add(this.btnPlaylists);
             this.pnlSidebar.Controls.Add(this.btnArtists);
             this.pnlSidebar.Controls.Add(this.btnSongs);
@@ -86,14 +88,29 @@ namespace MusicLibraryManager.GUI
             this.btnStatistics.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnStatistics.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnStatistics.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStatistics.Location = new System.Drawing.Point(0, 331);
+            this.btnStatistics.Location = new System.Drawing.Point(0, 398);
             this.btnStatistics.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnStatistics.Name = "btnStatistics";
-            this.btnStatistics.Size = new System.Drawing.Size(250, 72);
-            this.btnStatistics.TabIndex = 4;
+            this.btnStatistics.Size = new System.Drawing.Size(250, 68);
+            this.btnStatistics.TabIndex = 5;
             this.btnStatistics.Text = "📊 Thống kê";
             this.btnStatistics.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.btnStatistics.Click += new System.EventHandler(this.btnStatistics_Click);
+            // 
+            // btnHistory
+            // 
+            this.btnHistory.BackColor = System.Drawing.Color.Transparent;
+            this.btnHistory.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHistory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnHistory.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHistory.Location = new System.Drawing.Point(0, 331);
+            this.btnHistory.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnHistory.Name = "btnHistory";
+            this.btnHistory.Size = new System.Drawing.Size(250, 67);
+            this.btnHistory.TabIndex = 4;
+            this.btnHistory.Text = "📜 Lịch sử";
+            this.btnHistory.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnHistory.Click += new System.EventHandler(this.btnHistory_Click);
             // 
             // btnPlaylists
             // 
@@ -260,6 +277,7 @@ namespace MusicLibraryManager.GUI
         private Sunny.UI.UIButton btnSongs;
         private Sunny.UI.UIButton btnArtists;
         private Sunny.UI.UIButton btnPlaylists;
+        private Sunny.UI.UIButton btnHistory;
         private Sunny.UI.UIButton btnStatistics;
         private Sunny.UI.UIButton btnSettings;
         private Sunny.UI.UIPanel pnlContent;

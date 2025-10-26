@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using MusicLibraryManager.DAL;
 using MusicLibraryManager.Entities;
+using MusicLibraryManager.Helpers;
 
 namespace MusicLibraryManager.BUS
 {
@@ -14,7 +15,7 @@ namespace MusicLibraryManager.BUS
         {
             try
             {
-                return PlaylistDAO.GetAllPlaylists();
+                return PlaylistDAO.GetAllPlaylists(UserSession.CurrentUserID);
             }
             catch (Exception ex)
             {
@@ -32,7 +33,7 @@ namespace MusicLibraryManager.BUS
                 if (playlistID <= 0)
                     throw new Exception("ID playlist không hợp lệ");
 
-                return PlaylistDAO.GetPlaylistByID(playlistID);
+                return PlaylistDAO.GetPlaylistByID(playlistID, UserSession.CurrentUserID);
             }
             catch (Exception ex)
             {
@@ -51,7 +52,7 @@ namespace MusicLibraryManager.BUS
                 if (string.IsNullOrWhiteSpace(playlist.PlaylistName))
                     throw new Exception("Tên playlist không được để trống");
 
-                return PlaylistDAO.CreatePlaylist(playlist);
+                return PlaylistDAO.CreatePlaylist(playlist, UserSession.CurrentUserID);
             }
             catch (Exception ex)
             {
@@ -73,7 +74,7 @@ namespace MusicLibraryManager.BUS
                 if (string.IsNullOrWhiteSpace(playlist.PlaylistName))
                     throw new Exception("Tên playlist không được để trống");
 
-                return PlaylistDAO.UpdatePlaylist(playlist);
+                return PlaylistDAO.UpdatePlaylist(playlist, UserSession.CurrentUserID);
             }
             catch (Exception ex)
             {
@@ -91,7 +92,7 @@ namespace MusicLibraryManager.BUS
                 if (playlistID <= 0)
                     throw new Exception("ID playlist không hợp lệ");
 
-                return PlaylistDAO.DeletePlaylist(playlistID);
+                return PlaylistDAO.DeletePlaylist(playlistID, UserSession.CurrentUserID);
             }
             catch (Exception ex)
             {

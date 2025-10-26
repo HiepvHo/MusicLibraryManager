@@ -9,12 +9,15 @@ namespace MusicLibraryManager.DAL
     public class ArtistDAO
     {
         /// <summary>
-        /// Lấy tất cả ca sĩ
+        /// Lấy tất cả ca sĩ theo UserID
         /// </summary>
-        public static List<Artist> GetAllArtists()
+        public static List<Artist> GetAllArtists(int userID)
         {
             List<Artist> artists = new List<Artist>();
-            DataTable dt = DatabaseHelper.ExecuteQuery("sp_GetAllArtists");
+            SqlParameter[] parameters = {
+                new SqlParameter("@UserID", userID)
+            };
+            DataTable dt = DatabaseHelper.ExecuteQuery("sp_GetAllArtists", parameters);
 
             foreach (DataRow row in dt.Rows)
             {
@@ -47,23 +50,24 @@ namespace MusicLibraryManager.DAL
         /// <summary>
         /// Thêm ca sĩ mới
         /// </summary>
-        public static int AddArtist(Artist artist)
+        public static int AddArtist(Artist artist, int userID)
         {
             SqlParameter[] parameters = {
                 new SqlParameter("@ArtistName", artist.ArtistName),
                 new SqlParameter("@Biography", (object)artist.Biography ?? DBNull.Value),
                 new SqlParameter("@Country", (object)artist.Country ?? DBNull.Value),
-                new SqlParameter("@ImagePath", (object)artist.ImagePath ?? DBNull.Value)
+                new SqlParameter("@ImagePath", (object)artist.ImagePath ?? DBNull.Value),
+                new SqlParameter("@UserID", userID)
             };
 
-            object result = DatabaseHelper.ExecuteScalar("sp_AddArtist", parameters);
+            object result = DatabaseHelper.ExecuteScalar("sp_InsertArtist", parameters);
             return Convert.ToInt32(result);
         }
 
         /// <summary>
         /// Cập nhật thông tin ca sĩ
         /// </summary>
-        public static bool UpdateArtist(Artist artist)
+        public static bool UpdateArtist(Artist artist, int userID)
         {
             try
             {
@@ -72,14 +76,11 @@ namespace MusicLibraryManager.DAL
                     new SqlParameter("@ArtistName", artist.ArtistName),
                     new SqlParameter("@Biography", (object)artist.Biography ?? DBNull.Value),
                     new SqlParameter("@Country", (object)artist.Country ?? DBNull.Value),
-                    new SqlParameter("@ImagePath", (object)artist.ImagePath ?? DBNull.Value)
+                    new SqlParameter("@ImagePath", (object)artist.ImagePath ?? DBNull.Value),
+                    new SqlParameter("@UserID", userID)
                 };
 
                 int result = DatabaseHelper.ExecuteNonQuery("sp_UpdateArtist", parameters);
-                
-                // Debug log
-                System.Diagnostics.Debug.WriteLine($"UpdateArtist: ArtistID={artist.ArtistID}, Result={result}");
-                
                 return result > 0;
             }
             catch (Exception ex)
@@ -92,29 +93,29 @@ namespace MusicLibraryManager.DAL
         /// <summary>
         /// Xóa ca sĩ
         /// </summary>
-        public static bool DeleteArtist(int artistID)
+        public static bool DeleteArtist(int artistID, int userID)
         {
             SqlParameter[] parameters = {
-                new SqlParameter("@ArtistID", artistID)
+                new SqlParameter("@ArtistID", artistID),
+                new SqlParameter("@UserID", userID)
             };
 
-            string query = "DELETE FROM Artists WHERE ArtistID = @ArtistID";
-            DataTable dt = DatabaseHelper.ExecuteQueryDirect(query, parameters);
-            return true;
+            int result = DatabaseHelper.ExecuteNonQuery("sp_DeleteArtist", parameters);
+            return result > 0;
         }
 
         /// <summary>
         /// Tìm kiếm ca sĩ theo tên
         /// </summary>
-        public static List<Artist> SearchArtists(string searchTerm)
+        public static List<Artist> SearchArtists(string searchTerm, int userID)
         {
             List<Artist> artists = new List<Artist>();
             SqlParameter[] parameters = {
-                new SqlParameter("@SearchTerm", searchTerm)
+                new SqlParameter("@SearchTerm", searchTerm),
+                new SqlParameter("@UserID", userID)
             };
 
-            string query = "SELECT * FROM Artists WHERE ArtistName LIKE N'%' + @SearchTerm + '%' ORDER BY ArtistName";
-            DataTable dt = DatabaseHelper.ExecuteQueryDirect(query, parameters);
+            DataTable dt = DatabaseHelper.ExecuteQuery("sp_SearchArtists", parameters);
 
             foreach (DataRow row in dt.Rows)
             {

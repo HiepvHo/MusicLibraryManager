@@ -9,12 +9,15 @@ namespace MusicLibraryManager.DAL
     public class PlaylistDAO
     {
         /// <summary>
-        /// Lấy tất cả playlist
+        /// Lấy tất cả playlist của user
         /// </summary>
-        public static List<Playlist> GetAllPlaylists()
+        public static List<Playlist> GetAllPlaylists(int userID)
         {
             List<Playlist> playlists = new List<Playlist>();
-            DataTable dt = DatabaseHelper.ExecuteQuery("sp_GetAllPlaylists");
+            SqlParameter[] parameters = {
+                new SqlParameter("@UserID", userID)
+            };
+            DataTable dt = DatabaseHelper.ExecuteQuery("sp_GetAllPlaylists", parameters);
 
             foreach (DataRow row in dt.Rows)
             {
@@ -27,20 +30,14 @@ namespace MusicLibraryManager.DAL
         /// <summary>
         /// Lấy playlist theo ID
         /// </summary>
-        public static Playlist GetPlaylistByID(int playlistID)
+        public static Playlist GetPlaylistByID(int playlistID, int userID)
         {
             SqlParameter[] parameters = {
-                new SqlParameter("@PlaylistID", playlistID)
+                new SqlParameter("@PlaylistID", playlistID),
+                new SqlParameter("@UserID", userID)
             };
 
-            string query = "SELECT p.*, COUNT(ps.SongID) AS SongCount " +
-                          "FROM Playlists p " +
-                          "LEFT JOIN PlaylistSongs ps ON p.PlaylistID = ps.PlaylistID " +
-                          "WHERE p.PlaylistID = @PlaylistID " +
-                          "GROUP BY p.PlaylistID, p.PlaylistName, p.Description, p.CoverImagePath, " +
-                          "p.IsPublic, p.CreatedDate, p.UpdatedDate";
-
-            DataTable dt = DatabaseHelper.ExecuteQueryDirect(query, parameters);
+            DataTable dt = DatabaseHelper.ExecuteQuery("sp_GetPlaylistByID", parameters);
 
             if (dt.Rows.Count > 0)
             {
@@ -53,51 +50,46 @@ namespace MusicLibraryManager.DAL
         /// <summary>
         /// Tạo playlist mới
         /// </summary>
-        public static int CreatePlaylist(Playlist playlist)
+        public static int CreatePlaylist(Playlist playlist, int userID)
         {
             SqlParameter[] parameters = {
                 new SqlParameter("@PlaylistName", playlist.PlaylistName),
                 new SqlParameter("@Description", (object)playlist.Description ?? DBNull.Value),
-                new SqlParameter("@CoverImagePath", (object)playlist.CoverImagePath ?? DBNull.Value)
+                new SqlParameter("@CreatedBy", userID)
             };
 
-            object result = DatabaseHelper.ExecuteScalar("sp_CreatePlaylist", parameters);
+            object result = DatabaseHelper.ExecuteScalar("sp_InsertPlaylist", parameters);
             return Convert.ToInt32(result);
         }
 
         /// <summary>
         /// Cập nhật playlist
         /// </summary>
-        public static bool UpdatePlaylist(Playlist playlist)
+        public static bool UpdatePlaylist(Playlist playlist, int userID)
         {
             SqlParameter[] parameters = {
                 new SqlParameter("@PlaylistID", playlist.PlaylistID),
                 new SqlParameter("@PlaylistName", playlist.PlaylistName),
                 new SqlParameter("@Description", (object)playlist.Description ?? DBNull.Value),
-                new SqlParameter("@CoverImagePath", (object)playlist.CoverImagePath ?? DBNull.Value),
-                new SqlParameter("@IsPublic", playlist.IsPublic)
+                new SqlParameter("@UserID", userID)
             };
 
-            string query = "UPDATE Playlists SET PlaylistName = @PlaylistName, Description = @Description, " +
-                          "CoverImagePath = @CoverImagePath, IsPublic = @IsPublic, UpdatedDate = GETDATE() " +
-                          "WHERE PlaylistID = @PlaylistID";
-
-            DataTable dt = DatabaseHelper.ExecuteQueryDirect(query, parameters);
-            return true;
+            int result = DatabaseHelper.ExecuteNonQuery("sp_UpdatePlaylist", parameters);
+            return result > 0;
         }
 
         /// <summary>
         /// Xóa playlist
         /// </summary>
-        public static bool DeletePlaylist(int playlistID)
+        public static bool DeletePlaylist(int playlistID, int userID)
         {
             SqlParameter[] parameters = {
-                new SqlParameter("@PlaylistID", playlistID)
+                new SqlParameter("@PlaylistID", playlistID),
+                new SqlParameter("@UserID", userID)
             };
 
-            string query = "DELETE FROM Playlists WHERE PlaylistID = @PlaylistID";
-            DataTable dt = DatabaseHelper.ExecuteQueryDirect(query, parameters);
-            return true;
+            int result = DatabaseHelper.ExecuteNonQuery("sp_DeletePlaylist", parameters);
+            return result > 0;
         }
 
         /// <summary>

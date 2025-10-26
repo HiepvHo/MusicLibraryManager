@@ -9,12 +9,15 @@ namespace MusicLibraryManager.DAL
     public class GenreDAO
     {
         /// <summary>
-        /// Lấy tất cả thể loại
+        /// Lấy tất cả thể loại (public + của user)
         /// </summary>
-        public static List<Genre> GetAllGenres()
+        public static List<Genre> GetAllGenres(int userID)
         {
             List<Genre> genres = new List<Genre>();
-            DataTable dt = DatabaseHelper.ExecuteQuery("sp_GetAllGenres");
+            SqlParameter[] parameters = {
+                new SqlParameter("@UserID", userID)
+            };
+            DataTable dt = DatabaseHelper.ExecuteQuery("sp_GetAllGenres", parameters);
 
             foreach (DataRow row in dt.Rows)
             {
@@ -47,45 +50,46 @@ namespace MusicLibraryManager.DAL
         /// <summary>
         /// Thêm thể loại mới
         /// </summary>
-        public static int AddGenre(Genre genre)
+        public static int AddGenre(Genre genre, int userID)
         {
             SqlParameter[] parameters = {
                 new SqlParameter("@GenreName", genre.GenreName),
-                new SqlParameter("@Description", (object)genre.Description ?? DBNull.Value)
+                new SqlParameter("@Description", (object)genre.Description ?? DBNull.Value),
+                new SqlParameter("@UserID", userID)
             };
 
-            object result = DatabaseHelper.ExecuteScalar("sp_AddGenre", parameters);
+            object result = DatabaseHelper.ExecuteScalar("sp_InsertGenre", parameters);
             return Convert.ToInt32(result);
         }
 
         /// <summary>
         /// Cập nhật thông tin thể loại
         /// </summary>
-        public static bool UpdateGenre(Genre genre)
+        public static bool UpdateGenre(Genre genre, int userID)
         {
             SqlParameter[] parameters = {
                 new SqlParameter("@GenreID", genre.GenreID),
                 new SqlParameter("@GenreName", genre.GenreName),
-                new SqlParameter("@Description", (object)genre.Description ?? DBNull.Value)
+                new SqlParameter("@Description", (object)genre.Description ?? DBNull.Value),
+                new SqlParameter("@UserID", userID)
             };
 
-            string query = "UPDATE Genres SET GenreName = @GenreName, Description = @Description WHERE GenreID = @GenreID";
-            DataTable dt = DatabaseHelper.ExecuteQueryDirect(query, parameters);
-            return true;
+            int result = DatabaseHelper.ExecuteNonQuery("sp_UpdateGenre", parameters);
+            return result > 0;
         }
 
         /// <summary>
         /// Xóa thể loại
         /// </summary>
-        public static bool DeleteGenre(int genreID)
+        public static bool DeleteGenre(int genreID, int userID)
         {
             SqlParameter[] parameters = {
-                new SqlParameter("@GenreID", genreID)
+                new SqlParameter("@GenreID", genreID),
+                new SqlParameter("@UserID", userID)
             };
 
-            string query = "DELETE FROM Genres WHERE GenreID = @GenreID";
-            DataTable dt = DatabaseHelper.ExecuteQueryDirect(query, parameters);
-            return true;
+            int result = DatabaseHelper.ExecuteNonQuery("sp_DeleteGenre", parameters);
+            return result > 0;
         }
 
         /// <summary>

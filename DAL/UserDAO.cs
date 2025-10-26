@@ -80,6 +80,53 @@ namespace MusicLibraryManager.DAL
         }
 
         /// <summary>
+        /// Lấy thông tin user qua email
+        /// </summary>
+        public static User GetUserByEmail(string email)
+        {
+            try
+            {
+                SqlParameter[] parameters = {
+                    new SqlParameter("@Email", email)
+                };
+
+                DataTable dt = DatabaseHelper.ExecuteQuery("sp_GetUserByEmail", parameters);
+
+                if (dt.Rows.Count > 0)
+                {
+                    return MapDataRowToUser(dt.Rows[0]);
+                }
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi khi tìm user: {ex.Message}", ex);
+            }
+        }
+
+        /// <summary>
+        /// Cập nhật mật khẩu bằng UserID (dùng cho reset password)
+        /// </summary>
+        public static bool UpdatePasswordByUserID(int userID, string newPasswordHash)
+        {
+            try
+            {
+                SqlParameter[] parameters = {
+                    new SqlParameter("@UserID", userID),
+                    new SqlParameter("@PasswordHash", newPasswordHash)
+                };
+
+                int result = DatabaseHelper.ExecuteNonQuery("sp_UpdatePasswordByUserID", parameters);
+                return result > 0;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi khi cập nhật mật khẩu: {ex.Message}", ex);
+            }
+        }
+
+        /// <summary>
         /// Map DataRow sang User object
         /// </summary>
         private static User MapDataRowToUser(DataRow row)

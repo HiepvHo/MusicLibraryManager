@@ -3,7 +3,15 @@
   "WorkspaceRootPath": "C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{36448FE0-13C8-4D62-B5D5-FBB4AF341C7B}|MusicLibraryManager.csproj|c:\\users\\admin1\\source\\repos\\musiclibrarymanager\\gui\\playlistmanagementform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{36448FE0-13C8-4D62-B5D5-FBB4AF341C7B}|MusicLibraryManager.csproj|c:\\users\\admin1\\source\\repos\\musiclibrarymanager\\gui\\artistgenremanagementform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{36448FE0-13C8-4D62-B5D5-FBB4AF341C7B}|MusicLibraryManager.csproj|solutionrelative:gui\\artistgenremanagementform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36448FE0-13C8-4D62-B5D5-FBB4AF341C7B}|MusicLibraryManager.csproj|C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\gui\\registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{36448FE0-13C8-4D62-B5D5-FBB4AF341C7B}|MusicLibraryManager.csproj|solutionrelative:gui\\registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36448FE0-13C8-4D62-B5D5-FBB4AF341C7B}|MusicLibraryManager.csproj|C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\gui\\playlistmanagementform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{36448FE0-13C8-4D62-B5D5-FBB4AF341C7B}|MusicLibraryManager.csproj|solutionrelative:gui\\playlistmanagementform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -15,20 +23,12 @@
       "RelativeMoniker": "D:0:0:{36448FE0-13C8-4D62-B5D5-FBB4AF341C7B}|MusicLibraryManager.csproj|solutionrelative:gui\\settingsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{36448FE0-13C8-4D62-B5D5-FBB4AF341C7B}|MusicLibraryManager.csproj|C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\gui\\registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{36448FE0-13C8-4D62-B5D5-FBB4AF341C7B}|MusicLibraryManager.csproj|solutionrelative:gui\\registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{36448FE0-13C8-4D62-B5D5-FBB4AF341C7B}|MusicLibraryManager.csproj|C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\gui\\playerwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{36448FE0-13C8-4D62-B5D5-FBB4AF341C7B}|MusicLibraryManager.csproj|solutionrelative:gui\\playerwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{36448FE0-13C8-4D62-B5D5-FBB4AF341C7B}|MusicLibraryManager.csproj|C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\gui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{36448FE0-13C8-4D62-B5D5-FBB4AF341C7B}|MusicLibraryManager.csproj|solutionrelative:gui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36448FE0-13C8-4D62-B5D5-FBB4AF341C7B}|MusicLibraryManager.csproj|C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\gui\\artistgenremanagementform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{36448FE0-13C8-4D62-B5D5-FBB4AF341C7B}|MusicLibraryManager.csproj|solutionrelative:gui\\artistgenremanagementform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{36448FE0-13C8-4D62-B5D5-FBB4AF341C7B}|MusicLibraryManager.csproj|C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\gui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -58,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -74,6 +74,62 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ArtistGenreManagementForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\GUI\\ArtistGenreManagementForm.cs",
+              "RelativeDocumentMoniker": "GUI\\ArtistGenreManagementForm.cs",
+              "ToolTip": "C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\GUI\\ArtistGenreManagementForm.cs [Design]",
+              "RelativeToolTip": "GUI\\ArtistGenreManagementForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-25T13:15:55.512Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PlaylistManagementForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\GUI\\PlaylistManagementForm.cs",
+              "RelativeDocumentMoniker": "GUI\\PlaylistManagementForm.cs",
+              "ToolTip": "C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\GUI\\PlaylistManagementForm.cs [Design]",
+              "RelativeToolTip": "GUI\\PlaylistManagementForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-25T13:12:49.653Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RegisterForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\GUI\\RegisterForm.cs",
+              "RelativeDocumentMoniker": "GUI\\RegisterForm.cs",
+              "ToolTip": "C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\GUI\\RegisterForm.cs [Design]",
+              "RelativeToolTip": "GUI\\RegisterForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-25T13:12:55.939Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SettingsForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\GUI\\SettingsForm.cs",
+              "RelativeDocumentMoniker": "GUI\\SettingsForm.cs",
+              "ToolTip": "C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\GUI\\SettingsForm.cs [Design]",
+              "RelativeToolTip": "GUI\\SettingsForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-25T13:12:57.987Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MainForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\GUI\\MainForm.cs",
+              "RelativeDocumentMoniker": "GUI\\MainForm.cs",
+              "ToolTip": "C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\GUI\\MainForm.cs [Design]",
+              "RelativeToolTip": "GUI\\MainForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-25T13:12:35.262Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 8,
               "Title": "LoginForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\GUI\\LoginForm.cs",
@@ -85,52 +141,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MainForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\GUI\\MainForm.cs",
-              "RelativeDocumentMoniker": "GUI\\MainForm.cs",
-              "ToolTip": "C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\GUI\\MainForm.cs [Design]",
-              "RelativeToolTip": "GUI\\MainForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-25T13:12:35.262Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PlaylistManagementForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\GUI\\PlaylistManagementForm.cs",
-              "RelativeDocumentMoniker": "GUI\\PlaylistManagementForm.cs",
-              "ToolTip": "C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\GUI\\PlaylistManagementForm.cs [Design]",
-              "RelativeToolTip": "GUI\\PlaylistManagementForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-25T13:12:49.653Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "RegisterForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\GUI\\RegisterForm.cs",
-              "RelativeDocumentMoniker": "GUI\\RegisterForm.cs",
-              "ToolTip": "C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\GUI\\RegisterForm.cs [Design]",
-              "RelativeToolTip": "GUI\\RegisterForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-25T13:12:55.939Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SettingsForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\GUI\\SettingsForm.cs",
-              "RelativeDocumentMoniker": "GUI\\SettingsForm.cs",
-              "ToolTip": "C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\GUI\\SettingsForm.cs [Design]",
-              "RelativeToolTip": "GUI\\SettingsForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-25T13:12:57.987Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "SongManagementForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\GUI\\SongManagementForm.cs",
               "RelativeDocumentMoniker": "GUI\\SongManagementForm.cs",
@@ -141,7 +152,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "PlayerWindow.cs [Design]",
               "DocumentMoniker": "C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\GUI\\PlayerWindow.cs",
               "RelativeDocumentMoniker": "GUI\\PlayerWindow.cs",
@@ -149,17 +160,6 @@
               "RelativeToolTip": "GUI\\PlayerWindow.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-25T13:12:30.594Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ArtistGenreManagementForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\GUI\\ArtistGenreManagementForm.cs",
-              "RelativeDocumentMoniker": "GUI\\ArtistGenreManagementForm.cs",
-              "ToolTip": "C:\\Users\\admin1\\source\\repos\\MusicLibraryManager\\GUI\\ArtistGenreManagementForm.cs [Design]",
-              "RelativeToolTip": "GUI\\ArtistGenreManagementForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-25T13:15:55.512Z"
             },
             {
               "$type": "Document",

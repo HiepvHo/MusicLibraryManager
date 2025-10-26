@@ -27,3 +27,5 @@ C:\Users\admin1\source\repos\MusicLibraryManager\obj\Debug\MusicLib.7EDE249B.Up2
 C:\Users\admin1\source\repos\MusicLibraryManager\obj\Debug\MusicLibraryManager.exe
 C:\Users\admin1\source\repos\MusicLibraryManager\obj\Debug\MusicLibraryManager.pdb
 C:\Users\admin1\source\repos\MusicLibraryManager\obj\Debug\Interop.Shell32.dll
+C:\Users\admin1\source\repos\MusicLibraryManager\obj\Debug\MusicLibraryManager.GUI.HistoryForm.resources
+C:\Users\admin1\source\repos\MusicLibraryManager\obj\Debug\MusicLibraryManager.GUI.ForgotPasswordForm.resources

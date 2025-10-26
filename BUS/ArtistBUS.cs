@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using MusicLibraryManager.DAL;
 using MusicLibraryManager.Entities;
+using MusicLibraryManager.Helpers;
 
 namespace MusicLibraryManager.BUS
 {
@@ -14,7 +15,7 @@ namespace MusicLibraryManager.BUS
         {
             try
             {
-                return ArtistDAO.GetAllArtists();
+                return ArtistDAO.GetAllArtists(UserSession.CurrentUserID);
             }
             catch (Exception ex)
             {
@@ -52,11 +53,11 @@ namespace MusicLibraryManager.BUS
                     throw new Exception("Tên ca sĩ không được để trống");
 
                 // Kiểm tra trùng lặp
-                List<Artist> existingArtists = ArtistDAO.SearchArtists(artist.ArtistName);
+                List<Artist> existingArtists = ArtistDAO.SearchArtists(artist.ArtistName, UserSession.CurrentUserID);
                 if (existingArtists.Exists(a => a.ArtistName.Equals(artist.ArtistName, StringComparison.OrdinalIgnoreCase)))
                     throw new Exception("Ca sĩ này đã tồn tại trong hệ thống");
 
-                return ArtistDAO.AddArtist(artist);
+                return ArtistDAO.AddArtist(artist, UserSession.CurrentUserID);
             }
             catch (Exception ex)
             {
@@ -78,7 +79,7 @@ namespace MusicLibraryManager.BUS
                 if (string.IsNullOrWhiteSpace(artist.ArtistName))
                     throw new Exception("Tên ca sĩ không được để trống");
 
-                return ArtistDAO.UpdateArtist(artist);
+                return ArtistDAO.UpdateArtist(artist, UserSession.CurrentUserID);
             }
             catch (Exception ex)
             {
@@ -96,7 +97,7 @@ namespace MusicLibraryManager.BUS
                 if (artistID <= 0)
                     throw new Exception("ID ca sĩ không hợp lệ");
 
-                return ArtistDAO.DeleteArtist(artistID);
+                return ArtistDAO.DeleteArtist(artistID, UserSession.CurrentUserID);
             }
             catch (Exception ex)
             {
@@ -114,7 +115,7 @@ namespace MusicLibraryManager.BUS
                 if (string.IsNullOrWhiteSpace(searchTerm))
                     return GetAllArtists();
 
-                return ArtistDAO.SearchArtists(searchTerm.Trim());
+                return ArtistDAO.SearchArtists(searchTerm.Trim(), UserSession.CurrentUserID);
             }
             catch (Exception ex)
             {
